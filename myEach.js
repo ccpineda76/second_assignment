@@ -44,15 +44,26 @@ Array.prototype.myReduce = function (perform_array) {
 // INCLUDES //
 Array.prototype.myIncludes = function (perform_array) {
   for (let i = 0; i < this[i].length; i++) {
-    if (this[i] == perform_array){
+    if (this[i] == perform_array) {
       return true;
     }
   }
   return false;
 };
 
-/*
-//Testing includes
-//console.log([1, 2, 3].includes(2))        //true
-console.log([1, 2, 3].includes(4))        //false
-*/
+// INDEXOF //
+Array.prototype.myIndexOf = function () {
+  for (let i = 0; i < this[i].length; i++) {
+    if(this[i] == perform_array){
+      return i;
+    }
+  }
+  return -1;
+};
+
+//Testing INDEXOF
+const beasts = ['ant', 'bison', 'camel', 'duck', 'bison'];
+
+console.log(beasts.indexOf('bison'));  //EXPECT 1
+console.log(beasts.indexOf('bison', 2)); //EXPECT 4
+console.log(beasts.indexOf('giraffe')); //EXPECT -1
