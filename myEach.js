@@ -43,7 +43,7 @@ Array.prototype.myReduce = function (perform_array) {
 
 // INCLUDES //
 Array.prototype.myIncludes = function (perform_array) {
-  for (let i = 0; i < this[i].length; i++) {
+  for (let i = 0; i < this.length; i++) {
     if (this[i] == perform_array) {
       return true;
     }
@@ -52,18 +52,47 @@ Array.prototype.myIncludes = function (perform_array) {
 };
 
 // INDEXOF //
-Array.prototype.myIndexOf = function () {
-  for (let i = 0; i < this[i].length; i++) {
-    if(this[i] == perform_array){
+Array.prototype.myIndexOf = function (perform_array, starting_value = 0) {
+  for (let i = starting_value; i < this.length; i++) {
+    if (this[i] == perform_array) {
       return i;
     }
   }
   return -1;
 };
 
-//Testing INDEXOF
-const beasts = ['ant', 'bison', 'camel', 'duck', 'bison'];
+// PUSH //
 
-console.log(beasts.indexOf('bison'));  //EXPECT 1
-console.log(beasts.indexOf('bison', 2)); //EXPECT 4
-console.log(beasts.indexOf('giraffe')); //EXPECT -1
+Array.prototype.myPush = function (...added_elements) {
+  let iterator = 0;
+  let added_index = 0;
+  let combined_array_length = this.length + added_elements.length;
+  for (let i = this.length; i < combined_array_length; i++) {
+    this[i] = added_elements[added_index];
+    added_index++;
+  }
+  for (let i = 0; i < this.length; i++) {
+    iterator++;
+  }
+  return iterator;
+};
+
+
+//Testing Push
+const animals = ["pigs", "goats", "sheep"];
+
+const count = animals.myPush("cows");
+console.log(count);
+// expected output: 4
+console.log(animals);
+// expected output: Array ["pigs", "goats", "sheep", "cows"]
+
+let myArray = [1,2,3,4,5];   // Array called by the function
+console.log("myPush:");
+console.log(myArray.myPush(6,7,8));   // Output returned array length
+console.log(myArray);   // Output [1,2,3,4,5,6,7,8]
+
+myArray = [1,2,3,4,5];   // Array called by the function
+console.log("Push:");
+console.log(myArray.push(6,7,8));   // Output returned array length
+console.log(myArray);   // Output [1,2,3,4,5,6,7,8]
