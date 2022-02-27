@@ -41,11 +41,18 @@ Array.prototype.myReduce = function (perform_array) {
   return resulter;
 };
 
-/*Testing Reduce
- 0 + 1 + 2 + 3 + 4
-let total = [ 0, 1, 2, 3 ].myReduce(
-  ( previousValue, currentValue ) => previousValue + currentValue,
-  0
-)
-console.log(total);
+// INCLUDES //
+Array.prototype.myIncludes = function (perform_array) {
+  for (let i = 0; i < this[i].length; i++) {
+    if (this[i] == perform_array){
+      return true;
+    }
+  }
+  return false;
+};
+
+/*
+//Testing includes
+//console.log([1, 2, 3].includes(2))        //true
+console.log([1, 2, 3].includes(4))        //false
 */
