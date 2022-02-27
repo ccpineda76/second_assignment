@@ -96,13 +96,23 @@ Object.myKeys = function(object_letters) {
   return empty_array;
 };
 
+// VALUES //
+Object.myValues = function(object_letters) {
+  let empty_array = [];
+  for (element in object_letters){
+    empty_array.push(object_letters[element])
+  }
+  return empty_array;
+};
 
-//Testing KEYS
+
+//Testing myValues
 const object1 = {
   a: 'somestring',
   b: 42,
   c: false
 };
 
-console.log(Object.myKeys(object1));
+console.log(Object.myValues(object1));
 // expected output: Array ["a", "b", "c"]
+
