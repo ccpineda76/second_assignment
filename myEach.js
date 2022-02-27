@@ -62,7 +62,6 @@ Array.prototype.myIndexOf = function (perform_array, starting_value = 0) {
 };
 
 // PUSH //
-
 Array.prototype.myPush = function (...added_elements) {
   let iterator = 0;
   let added_index = 0;
@@ -88,11 +87,22 @@ Array.prototype.myLastIndexOf = function (search_array) {
   return lastindex;
 };
 
-const animals = ['Dodo', 'Tiger', 'Penguin', 'Dodo'];
+// KEYS //
+Object.myKeys = function(object_letters) {
+  let empty_array = [];
+  for (element in object_letters){
+    empty_array.push(element);
+  }
+  return empty_array;
+};
 
-//Testing LastIndexOf
-console.log(animals.myLastIndexOf('Dodo'));
-// expected output: 3
 
-console.log(animals.myLastIndexOf('Tiger'));
-// expected output: 1
+//Testing KEYS
+const object1 = {
+  a: 'somestring',
+  b: 42,
+  c: false
+};
+
+console.log(Object.myKeys(object1));
+// expected output: Array ["a", "b", "c"]
