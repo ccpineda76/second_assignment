@@ -77,22 +77,22 @@ Array.prototype.myPush = function (...added_elements) {
   return iterator;
 };
 
+// LASTINDEXOF //
+Array.prototype.myLastIndexOf = function (search_array) {
+  let lastindex = 0;
+  for (let i = 0; i < this.length; i++) {
+    if (this[i] == search_array){
+      lastindex = i;
+    }
+  }
+  return lastindex;
+};
 
-//Testing Push
-const animals = ["pigs", "goats", "sheep"];
+const animals = ['Dodo', 'Tiger', 'Penguin', 'Dodo'];
 
-const count = animals.myPush("cows");
-console.log(count);
-// expected output: 4
-console.log(animals);
-// expected output: Array ["pigs", "goats", "sheep", "cows"]
+//Testing LastIndexOf
+console.log(animals.myLastIndexOf('Dodo'));
+// expected output: 3
 
-let myArray = [1,2,3,4,5];   // Array called by the function
-console.log("myPush:");
-console.log(myArray.myPush(6,7,8));   // Output returned array length
-console.log(myArray);   // Output [1,2,3,4,5,6,7,8]
-
-myArray = [1,2,3,4,5];   // Array called by the function
-console.log("Push:");
-console.log(myArray.push(6,7,8));   // Output returned array length
-console.log(myArray);   // Output [1,2,3,4,5,6,7,8]
+console.log(animals.myLastIndexOf('Tiger'));
+// expected output: 1
