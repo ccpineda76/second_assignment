@@ -30,10 +30,22 @@ Array.prototype.mySome = function (perform_array) {
   return false;
 };
 
+// REDUCE //
+Array.prototype.myReduce = function (perform_array) {
+  let resulter = 0;
+  //console.log(perform_array);
+  //console.log(resulter);
+  for (let i = 0; i < this.length; i++) {
+    resulter = perform_array(resulter, this[i]);
+  }
+  return resulter;
+};
 
-
-/*Testing mySome
-result = [2, 5, 8, 1, 4].some(x => x > 10);  // false
-result = [12, 5, 8, 1, 4].some(x => x > 10);
-console.log(result);
+/*Testing Reduce
+ 0 + 1 + 2 + 3 + 4
+let total = [ 0, 1, 2, 3 ].myReduce(
+  ( previousValue, currentValue ) => previousValue + currentValue,
+  0
+)
+console.log(total);
 */
