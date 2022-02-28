@@ -57,9 +57,18 @@ Array.prototype.myIncludes = function (perform_array, from_index = 0) {
 
 // INDEXOF //
 Array.prototype.myIndexOf = function (perform_array, starting_value = 0) {
-  for (let i = starting_value; i < this.length; i++) {
-    if (this[i] == perform_array) {
-      return i;
+  if (starting_value < 0) {
+    for (let i = this.length + starting_value; i < this.length; i++) {
+      if (this[i] === perform_array) {
+        return i;
+      }
+    }
+  }
+  else if (starting_value >= 0) {
+    for (let i = starting_value; i < this.length; i++) {
+      if (this[i] === perform_array) {
+        return i;
+      }
     }
   }
   return -1;
@@ -82,11 +91,9 @@ Array.prototype.myPush = function (...added_elements) {
 
 // LASTINDEXOF //
 Array.prototype.myLastIndexOf = function (search_array, starting_value = this.length - 1) {
-  if (starting_value <  0)
-  {
-    for(let i = this.length + starting_value; i >= 0; i--)
-    {
-      if(this[i] === search_array){
+  if (starting_value < 0) {
+    for (let i = this.length + starting_value; i >= 0; i--) {
+      if (this[i] === search_array) {
         return i;
       }
     }
@@ -116,12 +123,13 @@ Object.myValues = function (object_letters) {
   }
   return empty_array;
 };
-//            -4 -3 -2 -1
-var numbers = [2, 5, 9, 2];
 
-console.log(numbers.myLastIndexOf(2));     // 3 [1,2,3,4,54,65,67,7,8]
-console.log(numbers.myLastIndexOf(7));     // -1
-console.log(numbers.myLastIndexOf(2, 3));  // 3
-console.log(numbers.myLastIndexOf(2, 2));  // 0
-console.log(numbers.myLastIndexOf(2, -2)); // 0
-console.log(numbers.myLastIndexOf(2, -1)); // 3
+/*
+myEach is checked
+myMap is checked
+mySome is checked
+myReduce is checked
+myIncludes is checked
+myIndexOf is fixed/checked
+*/
+
