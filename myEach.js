@@ -81,35 +81,47 @@ Array.prototype.myPush = function (...added_elements) {
 };
 
 // LASTINDEXOF //
-Array.prototype.myLastIndexOf = function (search_array) {
-  let lastindex = 0;
-  for (let i = 0; i < this.length; i++) {
-    if (this[i] == search_array) {
-      lastindex = i;
+Array.prototype.myLastIndexOf = function (search_array, starting_value = this.length - 1) {
+  if (starting_value <  0)
+  {
+    for(let i = this.length + starting_value; i >= 0; i--)
+    {
+      if(this[i] === search_array){
+        return i;
+      }
     }
   }
-  return lastindex;
+  for (let i = starting_value; i >= 0; i--) {
+    if (this[i] === search_array) {
+      return i;
+    }
+  }
+  return -1;
 };
 
-/*
+// KEYS //
+Object.myKeys = function (object_letters) {
+  let empty_array = [];
+  for (element in object_letters) {
+    empty_array.push(element);
+  }
+  return empty_array;
+};
 
-console.log([1, 2, NaN].myIncludes(NaN)) //true
-console.log([1, 2, 3].myIncludes(2)); //true
-console.log([1, 2, 3].myIncludes(4)); //false
-console.log([1, 2, 3].myIncludes(3, 3)); //false
-console.log([1, 2, 3].myIncludes(3, -1)); //true
-console.log(["1", "2", "3"].myIncludes(3)); // false
+// VALUES //
+Object.myValues = function (object_letters) {
+  let empty_array = [];
+  for (element in object_letters) {
+    empty_array.push(object_letters[element])
+  }
+  return empty_array;
+};
+//            -4 -3 -2 -1
+var numbers = [2, 5, 9, 2];
 
-const array1 = [1, 2, 3];
-
-console.log(array1.myIncludes(2));
-// expected output: true
-
-const pets = ["cat", "dog", "bat"];
-
-console.log(pets.myIncludes("cat"));
-// expected output: true
-
-console.log(pets.myIncludes("at"));
-// expected output: false
-*/
+console.log(numbers.myLastIndexOf(2));     // 3 [1,2,3,4,54,65,67,7,8]
+console.log(numbers.myLastIndexOf(7));     // -1
+console.log(numbers.myLastIndexOf(2, 3));  // 3
+console.log(numbers.myLastIndexOf(2, 2));  // 0
+console.log(numbers.myLastIndexOf(2, -2)); // 0
+console.log(numbers.myLastIndexOf(2, -1)); // 3
