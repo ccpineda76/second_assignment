@@ -109,6 +109,12 @@ Array.prototype.myLastIndexOf = function (search_array, starting_value = this.le
 // KEYS //
 Object.myKeys = function (object_letters) {
   let empty_array = [];
+  if (Array.isArray(object_letters) === true) {
+    for (let i = 0; i < object_letters.length; i++) {
+      empty_array[i] = i;
+    }
+    return empty_array;
+  }
   for (element in object_letters) {
     empty_array.push(element);
   }
@@ -131,5 +137,8 @@ mySome is checked
 myReduce is checked
 myIncludes is checked
 myIndexOf is fixed/checked
+myPush is checked
+lastIndexOf is checked
+myKeys is fixed/checked
+myValues is checked
 */
-
