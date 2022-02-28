@@ -32,13 +32,12 @@ Array.prototype.mySome = function (perform_array) {
 
 // REDUCE //
 Array.prototype.myReduce = function (perform_array) {
-  let resulter = 0;
-  //console.log(perform_array);
-  //console.log(resulter);
-  for (let i = 0; i < this.length; i++) {
-    resulter = perform_array(resulter, this[i]);
+  let previous_value = this[0];
+  for (let i = 1; i < this.length; i++) {
+    index = i;
+    previous_value = perform_array(previous_value, this[i], index);
   }
-  return resulter;
+  return previous_value;
 };
 
 // INCLUDES //
@@ -87,32 +86,12 @@ Array.prototype.myLastIndexOf = function (search_array) {
   return lastindex;
 };
 
-// KEYS //
-Object.myKeys = function(object_letters) {
-  let empty_array = [];
-  for (element in object_letters){
-    empty_array.push(element);
-  }
-  return empty_array;
-};
+const array = [15, 16, 17, 18, 19];
 
-// VALUES //
-Object.myValues = function(object_letters) {
-  let empty_array = [];
-  for (element in object_letters){
-    empty_array.push(object_letters[element])
-  }
-  return empty_array;
-};
+function reducer(previous, current, index, array) {
+  const returns = previous + current;
+  console.log(`previous: ${previous}, current: ${current}, index: ${index}, returns: ${returns}`);
+  return returns;
+}
 
-
-//Testing myValues
-const object1 = {
-  a: 'somestring',
-  b: 42,
-  c: false
-};
-
-console.log(Object.myValues(object1));
-// expected output: Array ["a", "b", "c"]
-
+console.log(array.myReduce(reducer));
