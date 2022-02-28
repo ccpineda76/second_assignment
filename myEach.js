@@ -11,7 +11,7 @@ Array.prototype.myEach = function (perform_array) {
 Array.prototype.myMap = function (perform_array) {
   let new_array = [];
   for (let i = 0; i < this.length; i++) {
-    if (this[i] == undefined) {
+    if (this[i] === undefined) {
       new_array.push(this[i]); //Push the empty null value into the new array if encountered
       continue; //If element is missing then go to next iteration
     }
@@ -41,9 +41,14 @@ Array.prototype.myReduce = function (perform_array) {
 };
 
 // INCLUDES //
-Array.prototype.myIncludes = function (perform_array) {
-  for (let i = 0; i < this.length; i++) {
-    if (this[i] == perform_array) {
+Array.prototype.myIncludes = function (perform_array, from_index = 0) {
+  if (from_index >= this.length) {
+    return false;
+  }
+  for (let i = from_index; i < this.length; i++) {
+    if (this[i] === perform_array) {
+      return true;
+    } else if (Number.isNaN(this[i]) && Number.isNaN(perform_array)) {
       return true;
     }
   }
@@ -79,19 +84,32 @@ Array.prototype.myPush = function (...added_elements) {
 Array.prototype.myLastIndexOf = function (search_array) {
   let lastindex = 0;
   for (let i = 0; i < this.length; i++) {
-    if (this[i] == search_array){
+    if (this[i] == search_array) {
       lastindex = i;
     }
   }
   return lastindex;
 };
 
-const array = [15, 16, 17, 18, 19];
+/*
 
-function reducer(previous, current, index, array) {
-  const returns = previous + current;
-  console.log(`previous: ${previous}, current: ${current}, index: ${index}, returns: ${returns}`);
-  return returns;
-}
+console.log([1, 2, NaN].myIncludes(NaN)) //true
+console.log([1, 2, 3].myIncludes(2)); //true
+console.log([1, 2, 3].myIncludes(4)); //false
+console.log([1, 2, 3].myIncludes(3, 3)); //false
+console.log([1, 2, 3].myIncludes(3, -1)); //true
+console.log(["1", "2", "3"].myIncludes(3)); // false
 
-console.log(array.myReduce(reducer));
+const array1 = [1, 2, 3];
+
+console.log(array1.myIncludes(2));
+// expected output: true
+
+const pets = ["cat", "dog", "bat"];
+
+console.log(pets.myIncludes("cat"));
+// expected output: true
+
+console.log(pets.myIncludes("at"));
+// expected output: false
+*/
