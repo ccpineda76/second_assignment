@@ -129,17 +129,3 @@ Object.myValues = function (object_letters) {
   }
   return empty_array;
 };
-
-
-const kvArray = [{ key: 1, value: 10 },
-  { key: 2, value: 20 },
-  { key: 3, value: 30 }];
-
-const reformattedArray = kvArray.myMap(({ key, value}) => ({ [key]: value }));
-console.log(reformattedArray);
-// reformattedArray is now [{1: 10}, {2: 20}, {3: 30}],
-
-// kvArray is still:
-// [{key: 1, value: 10},
-//  {key: 2, value: 20},
-//  {key: 3, value: 30}]
