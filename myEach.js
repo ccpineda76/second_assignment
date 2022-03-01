@@ -12,10 +12,10 @@ Array.prototype.myMap = function (perform_array) {
   let new_array = [];
   for (let i = 0; i < this.length; i++) {
     if (this[i] === undefined) {
-      new_array.push(this[i]); //Push the empty null value into the new array if encountered
+      new_array.myPush(this[i]); //Push the empty null value into the new array if encountered
       continue; //If element is missing then go to next iteration
     }
-    new_array.push(perform_array(this[i], i, this));
+    new_array.myPush(perform_array(this[i], i, this));
   }
   return new_array; //returning new array that was pushed in new values
 };
@@ -116,7 +116,7 @@ Object.myKeys = function (object_letters) {
     return empty_array;
   }
   for (element in object_letters) { //for each element in array like object
-    empty_array.push(element); 
+    empty_array.myPush(element); 
   }
   return empty_array;
 };
@@ -125,7 +125,21 @@ Object.myKeys = function (object_letters) {
 Object.myValues = function (object_letters) {
   let empty_array = [];
   for (element in object_letters) {
-    empty_array.push(object_letters[element]) //pushing value instead of the element itself
+    empty_array.myPush(object_letters[element]) //pushing value instead of the element itself
   }
   return empty_array;
 };
+
+
+const kvArray = [{ key: 1, value: 10 },
+  { key: 2, value: 20 },
+  { key: 3, value: 30 }];
+
+const reformattedArray = kvArray.myMap(({ key, value}) => ({ [key]: value }));
+console.log(reformattedArray);
+// reformattedArray is now [{1: 10}, {2: 20}, {3: 30}],
+
+// kvArray is still:
+// [{key: 1, value: 10},
+//  {key: 2, value: 20},
+//  {key: 3, value: 30}]
